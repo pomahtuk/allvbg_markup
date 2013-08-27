@@ -6,7 +6,7 @@ header {
   background: #0063a5;
   padding: 18px 90px;
   position: relative;
-  z-index: 2;
+  z-index: 99;
 }
 header .header_logo {
   display: block;

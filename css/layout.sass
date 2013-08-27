@@ -4,33 +4,19 @@
 
 $aside_color: #171717
 
-@mixin flexbox()
-  display: -webkit-box
-  display: -moz-box
-  display: -ms-flexbox
-  display: -webkit-flex
-  display: flex
-
-@mixin flex($values)
-  -webkit-box-flex: $values
-  -moz-box-flex:  $values
-  -webkit-flex:  $values
-  -ms-flex:  $values
-  flex:  $values
-
-@mixin order($val)
-  -webkit-box-ordinal-group: $val
-  -moz-box-ordinal-group: $val
-  -ms-flex-order: $val
-  -webkit-order: $val
-  order: $val
+@mixin box-sizing
+  -webkit-box-sizing: border-box
+  -moz-box-sizing: border-box
+  box-sizing: border-box  
 
 html
   background: #e0e0e0
   font-family: 'Open Sans', sans-serif
+  height: 100%
 
 #YMapsID
   width: 100%
+  height: calc(100%)
   min-height: 650px
 
 .ymaps-layers-pane, .ymaps-copyrights-pane, .grayscale
@@ -39,43 +25,39 @@ html
   -webkit-filter: contrast(1.2) grayscale(1) /* Chrome 19+ & Safari 6+ */
   -webkit-backface-visibility: hidden /* Fix for transition flickering */
 
-.wrapper
-  @include flexbox  
-  -webkit-flex-flow: row wrap
-
-.wrapper > *
-  flex: 1 100%
+body
+  height: 100%
 
 .main
+  @include box-sizing
+  padding-top: 80px
   text-align: left
-  position: relative
+  padding-left: 90px
+  height: 100%
+  position: absolute
+  width: 100%
+  top: 0px
+  left: 0px
+
+/*aside
+  margin-top: 80px*/
 
 .aside-1
-  @include flex(1)
   background: $aside_color
-  max-width: 90px
+  width: 90px
+  position: absolute
+  top: 0px
+  left: 0px
+  z-index: 90
+  height: 100%
 
 .aside-2
   @include box-shadow(rgba(#010101, .5) 0px 10px 50px)
   position: absolute
-  top: 40px
+  top: 120px
   right: 70px
   width: 225px
-  height: calc(100% - 120px)
+  height: calc(100% - 200px)
   background: #fff
   z-index: 999
   border: 3px solid $button_color
-
-@media all and (min-width: 600px)
-  .aside 
-    @include flex(1 90px)
-
-@media all and (min-width: 800px)
-  .main    
-    @include flex(2 0px)
-  .aside-1 
-    @include order(1)
-  .main    
-    @include order(2)
-  .footer  
-    @include order(3)
