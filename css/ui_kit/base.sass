@@ -1,0 +1,231 @@
+@import "compass"
+
+$main_color: #2e3641
+
+$color_unactive: #c1cfd9
+
+$button_color: #0063a5
+
+$buttom_apply_color: #a8bd44
+
+$link_color: #0977c0
+
+$secondary_text_color: #9eb2c0
+
+$hedings_color: #e9f0f4
+
+$block_hover_color: #fafcfd
+
+$block_width: 335px
+
+$big_font_size: 19px
+
+$main_font_size: 14px
+
+$common_font_size: 11px
+
+$heading_border_color: #3a414d
+
+$placeholder_color: #dae4eb
+
+$calendar_width: 250px
+
+
+a
+  text-decoration: none
+  color: $link_color
+
+  &:hover
+    color: lighten($link_color, 15%)
+
+ul
+  list-style: none
+  margin: 0
+  padding: 0
+
+  li
+    margin: 0
+    padding: 0
+
+@mixin box-sizing
+  -webkit-box-sizing: border-box
+  -moz-box-sizing: border-box
+  box-sizing: border-box
+
+.button
+  @include inline-block
+  height: 27px
+  line-height: 27px
+  background: $button_color
+  color: #fff
+  padding: 0 16px
+  margin: 0px 5px
+  font-size: 13px
+  text-transform: uppercase
+  font-weight: bold
+
+  &:hover
+    color: #fff
+    background: lighten($button_color, 15%)
+
+  &.disabled
+    background: $color_unactive
+
+    &:hover
+      background: $color_unactive
+
+  &.apply
+    background: $buttom_apply_color
+
+    &:hover
+      background: lighten($buttom_apply_color, 15%)
+
+input[type="text"]
+  @include box-sizing
+  @include box-shadow(rgba($color_unactive, .35) 1px 1px 3px inset)
+  width: $calendar_width
+  border: 1px solid $color_unactive
+  background: #fff
+  height: 27px
+  padding: 0px 5px
+  color: $main_color
+
+  &:focus
+    outline: none
+
+  &::-webkit-input-placeholder
+    color: $placeholder_color
+  &:-moz-placeholder
+    color: $placeholder_color
+  &::-moz-placeholder
+    color: $placeholder_color
+  &:-ms-input-placeholder
+    color: $placeholder_color
+
+.search
+  @include inline-block
+  position: relative
+  line-height: 27px
+
+  input
+    padding: 0px 5px 0px 27px
+
+  &:before
+    position: absolute
+    top: 0px
+    left: 7px
+    width: 27px
+    height: 27px
+    color: $color_unactive
+    font-family: FontAwesome
+    content: "\f002"
+
+input[type="checkbox"]
+  display: none
+
+  & + label
+    @include inline-block
+    height: 23px
+    background-repeat: no-repeat
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABcAAAAuCAMAAAD0gXL3AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAXRQTFRF2+Xs3ubt3uft3+fu4Oju4ejv4env4unv4urv3+ju4eju4env4unv4env4+vw3uju4unv4+rw5Orw5OvwmLElm7MpnbUtnbUunbUvnrUunrUvnrUynrYwn7Ywn7Yxn7czoLYzoLczoLc2obczobg4obg5org4ork1o7o7pLo6pbs9pbs+pbw/prs+prw/prxAprxBprxDp7xAp7xCp71CqL1CqL1DqL1EqL1Ftsdlt8lruspwu8xzvcx2v857v898wM58wM98wM99wtGBxNKFxdKJxtSKx9SOyteSyteTy9eVzNmXz9qf0Nyi0dyk0dyl0tym1d6t1d+t2OGx4Onu4env4unv4urv4+nJ4+vw5Ovw9fju9vjv9/j5+Pry+Pr6+fr6+fvz+vr7+vv1+vv2+vv4+vv8+vz2+/v8+/z4+/z5+/z7+/z9/Pz6/Pz8/Pz9/P36/P39/P3+/f37/f38/f3+/f7+/v3+/v7+/v7//v//////hgkTNwAAABR0Uk5T4vDw8PDw8PDw+Pj4+Pz8/f7+/v4hN6OOAAABDElEQVQ4y2NgYMEGGBg4YxOS0tBBHjcDS3xaTiE6KGdjYEnKKatEB9XsDCxphZXVGIADQzwiC6u4j7QLNnF/VXVF52QM8QAVfWM5m0S4eHRgLkjYV0nLQMyhGGpOUXW6tagrUJOfkqa5lB3c3qo4K1k9effsIDVdMznHTLg7K1PcFLVNNSwNjQwkHUuQ3F9d7SmhY6ysay5uV4jmLy8FEwszOadUDP96K2rK2BdgCQcPEdsKbOFTFRyDN9zIFWfOyK/AFGdlYIyMjMIETAz8YaFYAD9DCNZ0Es4ggDWdCDIIYE0nQgwCWN0pjFM8DKt4FAMvVnE+qoXbSBPnyivFFK7mYWBgY2PnQAfsDABaG5kujfc8PAAAAABJRU5ErkJggg==)
+    background-position: 0px -23px
+    padding-left: 28px
+
+  &:checked
+    & + label
+      background-position: 0px 0px
+
+.padding
+  padding: 20px
+
+.block
+  width: $block_width
+  float: left
+  margin: 20px
+
+.block_heading
+  height: 27px
+  background: $main_color
+  color: $hedings_color
+  font-size: $big_font_size
+  line-height: 27px
+  padding: 8px 16px
+
+.block_content
+  background: #fff
+
+.block.news
+  li
+    padding: 16px
+    line-height: $big_font_size
+    background: white
+
+    &:nth-child(2n)
+      background: $block_hover_color
+
+  a
+    font-size: $main_font_size
+
+  span
+    display: block
+    font-size: $common_font_size
+    color: $secondary_text_color
+
+.calendar
+  width: $calendar_width
+
+  .block_heading
+    position: relative
+    text-align: center
+
+    a
+      display: block
+      height: 27px
+      line-height: 27px
+      padding: 8px 0
+      text-align: center
+      width: 43px
+      position: absolute
+      top: 0px
+      color: $hedings_color
+
+      &:hover
+        color: lighten($hedings_color, 15%)
+
+      &:first-child
+        left: 0px
+        border-right: 1px solid $heading_border_color
+
+      &:last-child
+        right: 0px
+        border-left: 1px solid $heading_border_color
+
+  .block_content
+    
+    thead
+      border-top: 1px solid $heading_border_color
+      background: $main_color
+      color: $hedings_color
+      font-size: $main_font_size
+      line-height: 31px
+
+      th
+        font-weight: normal
+        text-align: center
+
+    tbody
+      td
+        font-size: $big_font_size
+        line-height: 34px
+        height: 34px
+        width: 34px
+        text-align: center
+
+        a
+          display: block
+          width: 100%
+          height: 100%
+
+          &:hover
+            background: $main_color
+            color: #fff

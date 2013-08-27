@@ -1,0 +1,16 @@
+header {
+  -webkit-box-shadow: #153c56 0px 1px 5px;
+  -moz-box-shadow: #153c56 0px 1px 5px;
+  box-shadow: #153c56 0px 1px 5px;
+  height: 44px;
+  background: #0063a5;
+  padding: 18px 90px;
+  position: relative;
+  z-index: 2;
+}
+header .header_logo {
+  display: block;
+  height: 40px;
+  width: 220px;
+  background: url("../img/logo.png");
+}
