@@ -1,4 +1,5 @@
 $(document).ready ->
+
   ymaps.ready ->
     addMenuItem = (group, map, menuContainer) ->
       $("""<li><ul id="menu#{group.properties.get("description")}"></ul></li>""").appendTo menuContainer

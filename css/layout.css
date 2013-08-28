@@ -265,6 +265,12 @@ body {
 
 /*aside
  * margin-top: 80px */
+.indx_srchbox_overlay {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
 .aside-1 {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -283,6 +289,7 @@ body {
   display: block;
   text-align: center;
   color: #e9f0f4;
+  position: relative;
 }
 .aside-1 a:hover {
   color: white;
@@ -290,6 +297,19 @@ body {
 .aside-1 a i {
   font-size: 40px;
   display: block;
+}
+.aside-1 a input {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0px;
+  left: 0px;
+  background: transparent !important;
+  color: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  z-index: 99;
 }
 
 .aside-2 {
