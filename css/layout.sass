@@ -46,10 +46,16 @@ body
 /*aside
   margin-top: 80px*/
 
-.indx_srchbox_overlay
-  display: none
-  visibility: hidden
-  opacity: 0
+#indx_flexbox:not(.indx_wide_input), #indx_rolledplaceholder
+  background: transparent !important
+  color: transparent !important
+  border: none !important
+  outline: none !important
+  box-shadow: none !important
+  cursor: pointer
+
+// indx_transition_fast indx_placeholder_color
+// indx_transition_fast indx_placeholder_color indx_wide_input indx_wide_input2
 
 .aside-1
   @include box-sizing
@@ -88,6 +94,7 @@ body
       outline: none !important
       box-shadow: none !important
       z-index: 99
+      cursor: pointer
 
 .aside-2
   @include box-shadow(rgba(#010101, .5) 0px 10px 50px)

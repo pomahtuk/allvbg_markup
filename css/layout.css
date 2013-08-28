@@ -265,10 +265,13 @@ body {
 
 /*aside
  * margin-top: 80px */
-.indx_srchbox_overlay {
-  display: none;
-  visibility: hidden;
-  opacity: 0;
+#indx_flexbox:not(.indx_wide_input), #indx_rolledplaceholder {
+  background: transparent !important;
+  color: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  cursor: pointer;
 }
 
 .aside-1 {
@@ -310,6 +313,7 @@ body {
   outline: none !important;
   box-shadow: none !important;
   z-index: 99;
+  cursor: pointer;
 }
 
 .aside-2 {
