@@ -295,6 +295,8 @@ body {
 }
 #menu a {
   display: block;
+  font-size: 13px;
+  color: #2e3641;
 }
 #menu li {
   margin: 5px 0px;
