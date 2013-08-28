@@ -59,8 +59,77 @@ body
   position: absolute
   top: 120px
   right: 70px
-  width: 225px
+  width: 250px
   height: calc(100% - 200px)
   background: #fff
   z-index: 999
   border: 3px solid $button_color
+
+#menu
+  img 
+    width: 24px
+    height: 25px
+    margin-right: 5px
+  a
+    display: block
+
+  li 
+    margin: 5px 0px
+
+#scrollbar1
+  clear: both
+  height: 100%
+
+  .viewport
+    width: 240px
+    height: 100%
+    overflow: hidden
+    position: relative
+
+  .overview
+    padding: 5px
+    list-style: none
+    position: absolute
+    left: 0
+    top: 0
+
+  .thumb
+    .end
+      background-color: #003D5D
+    background-color: #003D5D
+
+  .scrollbar
+    position: absolute
+    right: 0px
+    top: 0px
+    width: 10px
+
+  .track
+    background-color: #D8EEFD
+    height: 100%
+    width: 8px
+    position: relative
+    padding: 0 1px
+
+  .thumb
+    height: 20px
+    width: 8px
+    cursor: pointer
+    overflow: hidden
+    position: absolute
+    top: 0
+
+    .end
+      overflow: hidden
+      height: 5px
+      width: 8px
+
+  .disable
+    display: none
+
+.noSelect
+  user-select: none
+  -o-user-select: none
+  -moz-user-select: none
+  -khtml-user-select: none
+  -webkit-user-select: none

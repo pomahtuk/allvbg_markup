@@ -22,7 +22,8 @@ html class="no-js"
 
     script src="js/vendor/modernizr-2.6.2.min.js"
 
-    script src="http://api-maps.yandex.ru/2.0/?load=package.standard&lang=ru-RU" type="text/javascript"
+    script src="http://api-maps.yandex.ru/2.0/?load=package.full&amp;mode=release&amp;lang=ru-RU&amp;coordorder=longlat" type="text/javascript"
+
 
   body
 
@@ -32,6 +33,15 @@ html class="no-js"
     article class="main"
       aside class="aside aside-1"
       aside class="aside-2"
+        .scrollbar1 id="scrollbar1"
+          .scrollbar
+            .track
+              .thumb
+                .end
+          .viewport
+            ul.overview id="menu"
+
+
       #YMapsID
 
       / footer class="footer"
@@ -190,5 +200,6 @@ html class="no-js"
   javascript:
     window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')
   
+  script src="js/vendor/jquery.tinyscrollbar.min.js"
   script src="js/plugins.js"
   script src="js/main.js"

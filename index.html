@@ -17,7 +17,7 @@
     <link href="css/ui_kit/base.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <script src="js/vendor/modernizr-2.6.2.min.js"></script>
-    <script src="http://api-maps.yandex.ru/2.0/?load=package.standard&amp;lang=ru-RU" type="text/javascript"></script>
+    <script src="http://api-maps.yandex.ru/2.0/?load=package.full&amp;amp;mode=release&amp;amp;lang=ru-RU&amp;amp;coordorder=longlat" type="text/javascript"></script>
   </head>
   <body>
     <header>
@@ -25,7 +25,20 @@
     </header>
     <article class="main">
       <aside class="aside aside-1"></aside>
-      <aside class="aside-2"></aside>
+      <aside class="aside-2">
+        <div class="scrollbar1" id="scrollbar1">
+          <div class="scrollbar">
+            <div class="track">
+              <div class="thumb">
+                <div class="end"></div>
+              </div>
+            </div>
+          </div>
+          <div class="viewport">
+            <ul class="overview" id="menu"></ul>
+          </div>
+        </div>
+      </aside>
       <div id="YMapsID"></div>
     </article>
   </body>
@@ -33,6 +46,7 @@
   <script type="text/javascript">
     window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')
   </script>
+  <script src="js/vendor/jquery.tinyscrollbar.min.js"></script>
   <script src="js/plugins.js"></script>
   <script src="js/main.js"></script>
 </html>
