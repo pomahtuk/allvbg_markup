@@ -31,7 +31,6 @@
         zoom: 14,
         behaviors: ['default', 'scrollZoom']
       });
-      myMap.controls.add("zoomControl");
       return ymaps.geoXml.load("http://allvbg.ru/main_map.xml").then((function(res) {
         res.geoObjects.each(function(item) {
           addMenuItem(item, myMap, $("#menu"));

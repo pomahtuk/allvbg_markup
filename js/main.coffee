@@ -26,7 +26,7 @@ $(document).ready ->
       zoom: 14
       behaviors: ['default', 'scrollZoom']
     )
-    myMap.controls.add "zoomControl"
+    #myMap.controls.add "zoomControl"
     #myMap.controls.add new ymaps.control.ScaleLine()
 
     ymaps.geoXml.load("http://allvbg.ru/main_map.xml").then ((res) ->
