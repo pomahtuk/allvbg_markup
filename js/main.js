@@ -28,7 +28,8 @@
       };
       myMap = new ymaps.Map("YMapsID", {
         center: [28.762311, 60.705288],
-        zoom: 14
+        zoom: 14,
+        behaviors: ['default', 'scrollZoom']
       });
       myMap.controls.add("zoomControl");
       return ymaps.geoXml.load("http://allvbg.ru/main_map.xml").then((function(res) {

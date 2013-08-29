@@ -24,6 +24,7 @@ $(document).ready ->
     myMap = new ymaps.Map("YMapsID",
       center: [28.762311, 60.705288]
       zoom: 14
+      behaviors: ['default', 'scrollZoom']
     )
     myMap.controls.add "zoomControl"
     #myMap.controls.add new ymaps.control.ScaleLine()
