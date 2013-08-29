@@ -273,6 +273,10 @@ body {
   cursor: pointer;
 }
 
+.ymaps-b-balloon__close {
+  display: none !important;
+}
+
 .ymaps_ballon_opened {
   width: 220px;
 }
