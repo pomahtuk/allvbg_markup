@@ -43,32 +43,23 @@
           ]]>
         </description>
         <Point>
-          <coordinates>102.595626,14.996729</coordinates>
+          <coordinates>60.7053, 28.7622</coordinates>
         </Point>
       </Placemark>
       <Placemark>
-        <name>Folder object 2 (Polygon)</name>
-        <Polygon>
-          <outerBoundaryIs>
-            <LinearRing>
-              <coordinates>
-                -122.377830,37.830445,0
-                -122.377576,37.830631,0
-                -122.377840,37.830642,0
-                -122.377830,37.830445,0
-              </coordinates>
-            </LinearRing>
-          </outerBoundaryIs>
-        </Polygon>
-      </Placemark>
-      <Placemark>
-        <name>Folder object 3 (Path)</name>
-        <LineString>
-          <tessellate>1</tessellate>
-          <coordinates>
-            -122.378009,37.830128,0 -122.377885,37.830379,0
-          </coordinates>
-        </LineString>
+        <styleUrl>#exampleStyleMap</styleUrl>
+        <name>CDATA example 2</name>
+        <description>
+          <![CDATA[
+            <h1>CDATA Tags are useful!</h1>
+            <p><font color="red">Text is <i>more readable</i> and 
+            <b>easier to write</b> when you can avoid using entity 
+            references.</font></p>
+          ]]>
+        </description>
+        <Point>
+          <coordinates>60.7054, 28.7623</coordinates>
+        </Point>
       </Placemark>
     </Folder>
   </Document>
