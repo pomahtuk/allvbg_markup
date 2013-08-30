@@ -99,8 +99,7 @@
           });
           APP.markers["" + (container.attr('id'))]["" + (group.properties.get("name"))].push(marker);
           infoWindow = new google.maps.InfoWindow({
-            content: "<div class=\"ymaps_ballon_opened\">\n  " + (raw_marker.properties.get("description")) + "\n  <a href=\"$[ExtendedData.link]\">\n    <h3>" + (raw_marker.properties.get("name")) + "</h3>\n  </a>\n  <div class=\"tags\">\n    $[ExtendedData.tags]\n  </div>\n  <div class=\"footer\">\n    Рейтинг: $[ExtendedData.rating]\n  </div>\n</div>",
-            size: new google.maps.Size(260, 300)
+            content: "<div class=\"ymaps_ballon_opened\">\n  " + (raw_marker.properties.get("description")) + "\n  <a href=\"$[ExtendedData.link]\">\n    <h3>" + (raw_marker.properties.get("name")) + "</h3>\n  </a>\n  <div class=\"tags\">\n    $[ExtendedData.tags]\n  </div>\n  <div class=\"footer\">\n    Рейтинг: $[ExtendedData.rating]\n  </div>\n</div>"
           });
           return google.maps.event.addListener(marker, "click", openInfoWindow(infoWindow, marker));
         });
