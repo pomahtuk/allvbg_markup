@@ -5,7 +5,6 @@
       <IconStyle id="mystyle">
         <Icon>
           <href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
-          <scale>1.0</scale>
         </Icon>
       </IconStyle>
     </Style>
@@ -30,14 +29,14 @@
           <![CDATA[
             <div class="maps_ballon_opened">
               $[description]
-              <a href="$[meta.link]">
+              <a href="$[ExtendedData.link]">
                 <h3>$[name]</h3>
               </a>
               <div class="tags">
-                $[meta.tags]
+                $[ExtendedData.tags]
               </div>
               <div class="footer">
-                Рейтинг: $[meta.rating]
+                Рейтинг: $[ExtendedData.rating]
               </div>
             </div>
           ]]>
@@ -60,12 +59,12 @@
       <description>
         A folder is a container that can hold multiple other objects
       </description>
-      <meta>
+      <ExtendedData>
         <link>http://allvbg.ru/111</link>
         <tags>ololo, lololo</tags>
         <rating>5.0</rating>
-      </meta>
-      <Placemark>
+      </ExtendedData>
+      <Placemark id="1">
         <styleUrl>#exampleStyleMap</styleUrl>
         <name>CDATA example</name>
         <description>
@@ -80,7 +79,7 @@
           <coordinates>28.7622,60.7053</coordinates>
         </Point>
       </Placemark>
-      <Placemark>
+      <Placemark id="1">
         <styleUrl>#exampleStyleMap</styleUrl>
         <name>CDATA example 2</name>
         <description>
@@ -91,11 +90,11 @@
             references.</font></p>
           ]]>
         </description>
-        <meta>
+        <ExtendedData>
           <link>http://allvbg.ru/111</link>
           <tags>ololo, lololo</tags>
           <rating>5.0</rating>
-        </meta>
+        </ExtendedData>
         <Point>
           <coordinates>28.7623,60.7054</coordinates>
         </Point>
