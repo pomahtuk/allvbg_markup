@@ -30,7 +30,7 @@ $(document).ready ->
     #   url: './map.kml'
 
     ctaLayer = new google.maps.KmlLayer {
-      url: 'http://gmaps-samples.googlecode.com/svn/trunk/ggeoxml/cta.kml'
+      url: 'http://pomahtuk.github.io/allvbg_markup/map.kml'
     }
 
     ctaLayer.setMap map

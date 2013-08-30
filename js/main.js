@@ -27,7 +27,7 @@
       });
       map.mapTypes.set(MY_MAPTYPE_ID, customMapType);
       ctaLayer = new google.maps.KmlLayer({
-        url: 'http://gmaps-samples.googlecode.com/svn/trunk/ggeoxml/cta.kml'
+        url: 'http://pomahtuk.github.io/allvbg_markup/map.kml'
       });
       return ctaLayer.setMap(map);
     };
