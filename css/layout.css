@@ -231,7 +231,7 @@ html {
 #YMapsID {
   width: 100%;
   height: calc(100%);
-  min-height: 650px;
+  min-height: 250px;
 }
 
 .ymaps-layers-pane, .ymaps-copyrights-pane, .grayscale {

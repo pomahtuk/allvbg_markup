@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <Style id="highlightPlacemark">
+      <IconStyle>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/paddle/red-stars.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <Style id="normalPlacemark">
+      <IconStyle>
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href>
+        </Icon>
+      </IconStyle>
+    </Style>
+    <StyleMap id="exampleStyleMap">
+      <Pair>
+        <key>normal</key>
+        <styleUrl>#normalPlacemark</styleUrl>
+      </Pair>
+      <Pair>
+        <key>highlight</key>
+        <styleUrl>#highlightPlacemark</styleUrl>
+      </Pair>
+    </StyleMap>
+
+    <Folder>
+      <name>Folder</name>
+      <open>1</open>
+      <description>
+        A folder is a container that can hold multiple other objects
+      </description>
+      <Placemark>
+        <styleUrl>#exampleStyleMap</styleUrl>
+        <name>CDATA example</name>
+        <description>
+          <![CDATA[
+            <h1>CDATA Tags are useful!</h1>
+            <p><font color="red">Text is <i>more readable</i> and 
+            <b>easier to write</b> when you can avoid using entity 
+            references.</font></p>
+          ]]>
+        </description>
+        <Point>
+          <coordinates>102.595626,14.996729</coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Folder object 2 (Polygon)</name>
+        <Polygon>
+          <outerBoundaryIs>
+            <LinearRing>
+              <coordinates>
+                -122.377830,37.830445,0
+                -122.377576,37.830631,0
+                -122.377840,37.830642,0
+                -122.377830,37.830445,0
+              </coordinates>
+            </LinearRing>
+          </outerBoundaryIs>
+        </Polygon>
+      </Placemark>
+      <Placemark>
+        <name>Folder object 3 (Path)</name>
+        <LineString>
+          <tessellate>1</tessellate>
+          <coordinates>
+            -122.378009,37.830128,0 -122.377885,37.830379,0
+          </coordinates>
+        </LineString>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>
