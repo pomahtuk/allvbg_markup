@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2">
   <Document>
+    <Style id="pushpin">
+      <IconStyle id="mystyle">
+        <Icon>
+          <href>http://maps.google.com/mapfiles/kml/pushpin/ylw-pushpin.png</href>
+          <scale>1.0</scale>
+        </Icon>
+      </IconStyle>
+    </Style>
     <Style id="highlightPlacemark">
       <IconStyle>
         <Icon>
@@ -14,6 +22,27 @@
           <href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href>
         </Icon>
       </IconStyle>
+    </Style>
+    <Style id="exampleBalloonStyle">
+      <BalloonStyle>
+        <bgColor>ffffffbb</bgColor>
+        <text>
+          <![CDATA[
+            <div class="maps_ballon_opened">
+              $[description]
+              <a href="$[meta.link]">
+                <h3>$[name]</h3>
+              </a>
+              <div class="tags">
+                $[meta.tags]
+              </div>
+              <div class="footer">
+                Рейтинг: $[meta.rating]
+              </div>
+            </div>
+          ]]>
+        </text>
+      </BalloonStyle>
     </Style>
     <StyleMap id="exampleStyleMap">
       <Pair>
@@ -31,6 +60,11 @@
       <description>
         A folder is a container that can hold multiple other objects
       </description>
+      <meta>
+        <link>http://allvbg.ru/111</link>
+        <tags>ololo, lololo</tags>
+        <rating>5.0</rating>
+      </meta>
       <Placemark>
         <styleUrl>#exampleStyleMap</styleUrl>
         <name>CDATA example</name>
@@ -43,7 +77,7 @@
           ]]>
         </description>
         <Point>
-          <coordinates>60.7053, 28.7622</coordinates>
+          <coordinates>28.7622,60.7053</coordinates>
         </Point>
       </Placemark>
       <Placemark>
@@ -57,8 +91,13 @@
             references.</font></p>
           ]]>
         </description>
+        <meta>
+          <link>http://allvbg.ru/111</link>
+          <tags>ololo, lololo</tags>
+          <rating>5.0</rating>
+        </meta>
         <Point>
-          <coordinates>60.7054, 28.7623</coordinates>
+          <coordinates>28.7623,60.7054</coordinates>
         </Point>
       </Placemark>
     </Folder>

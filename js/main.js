@@ -2,7 +2,7 @@
   $(document).ready(function() {
     var initialize;
     initialize = function() {
-      var MY_MAPTYPE_ID, ctaLayer, customMapType, map, mapOptions, map_style, marker;
+      var MY_MAPTYPE_ID, contentString, customMapType, infowindow, map, mapOptions, map_style, marker;
       MY_MAPTYPE_ID = 'custom_style';
       map_style = [
         {
@@ -51,10 +51,13 @@
         map: map,
         title: 'Hello World!'
       });
-      ctaLayer = new google.maps.KmlLayer({
-        url: 'http://pomahtuk.github.io/allvbg_markup/map.kml'
+      contentString = "<div id=\"content\">\n  <div id=\"siteNotice\"></div>\n  <h1 id=\"firstHeading\" class=\"firstHeading\">Uluru</h1>\n  <div id=\"bodyContent\">\n    <p>\n      <b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large \n      sandstone rock formation in the southern part of the \n      Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) \n      south west of the nearest large town, Alice Springs; 450&#160;km \n      (280&#160;mi) by road. Kata Tjuta and Uluru are the two major \n      features of the Uluru - Kata Tjuta National Park. Uluru is \n      sacred to the Pitjantjatjara and Yankunytjatjara, the \n      Aboriginal people of the area. It has many springs, waterholes, \n      rock caves and ancient paintings. Uluru is listed as a World \n      Heritage Site.\n    </p>\n    <p>\n      Attribution: Uluru, \n      <a href=\"http://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194\">http://en.wikipedia.org/w/index.php?title=Uluru</a> \n      (last visited June 22, 2009).\n    </p>\n  </div>\n</div>";
+      infowindow = new google.maps.InfoWindow({
+        content: contentString
       });
-      return ctaLayer.setMap(map);
+      return google.maps.event.addListener(marker, 'click', function() {
+        return infowindow.open(map, marker);
+      });
     };
     return google.maps.event.addDomListener(window, 'load', initialize);
   });
