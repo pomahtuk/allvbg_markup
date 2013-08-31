@@ -73,34 +73,35 @@ $(document).ready ->
 
     APP.markers["#{container.attr('id')}"]["#{element.name}"] = []
 
-    # element.each (raw_marker) ->
-    #   marker = new google.maps.Marker
-    #     position: new google.maps.LatLng raw_marker.geometry._ti[1], raw_marker.geometry._ti[0]
-    #     icon: img
-    #     map: null
-    #   APP.markers["#{container.attr('id')}"]["#{element.properties.get("name")}"].push marker
+    for sub_element in element.elements
+      if sub_element.coordinates?
+        coords = sub_element.coordinates.split(',')
+        marker = new google.maps.Marker
+          position: new google.maps.LatLng coords[1], coords[0]
+          icon: img
+          map: null
+        APP.markers["#{container.attr('id')}"]["#{element.name}"] .push marker
 
-    #   # Create marker info window.
-    #   infoWindow = new google.maps.InfoWindow(
-    #     content: """
-    #       <div class="ymaps_ballon_opened">
-    #         #{raw_marker.properties.get("description")}
-    #         <a href="$[ExtendedData.link]">
-    #           <h3>#{raw_marker.properties.get("name")}</h3>
-    #         </a>
-    #         <div class="tags">
-    #           $[ExtendedData.tags]
-    #         </div>
-    #         <div class="footer">
-    #           Рейтинг: $[ExtendedData.rating]
-    #         </div>
-    #       </div>
-    #       """
-    #     # size: new google.maps.Size(260, 300)
-    #   )
-      
-    #   # Add marker click event listener.
-    #   google.maps.event.addListener marker, "click", openInfoWindow(infoWindow, marker)
+        # Create marker info window.
+        infoWindow = new google.maps.InfoWindow(
+          content: """
+            <div class="ymaps_ballon_opened">
+              <img src="#{sub_element.description}" />
+              <a href="#{sub_element.link}">
+                <h3>#{sub_element.name}</h3>
+              </a>
+              <div class="tags">
+                #{sub_element.tags}
+              </div>
+              <div class="footer">
+                Рейтинг: #{sub_element.rating}
+              </div>
+            </div>
+            """
+        )
+        
+        # Add marker click event listener.
+        google.maps.event.addListener marker, "click", openInfoWindow(infoWindow, marker)
 
   $.ajax
     type: "GET"

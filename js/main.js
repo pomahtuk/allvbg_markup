@@ -61,7 +61,7 @@
       return $("<li><ul id=\"menu" + element.description + "\"></ul></li>").appendTo(menuContainer);
     };
     addMenuItem2 = function(element, container) {
-      var img, item;
+      var coords, img, infoWindow, item, marker, sub_element, _i, _len, _ref, _results;
       container = $(container);
       img = "";
       if (element.elements[0].marker != null) {
@@ -88,7 +88,28 @@
         }
         return _results;
       }).appendTo($("<li></li>").appendTo(container));
-      return APP.markers["" + (container.attr('id'))]["" + element.name] = [];
+      APP.markers["" + (container.attr('id'))]["" + element.name] = [];
+      _ref = element.elements;
+      _results = [];
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        sub_element = _ref[_i];
+        if (sub_element.coordinates != null) {
+          coords = sub_element.coordinates.split(',');
+          marker = new google.maps.Marker({
+            position: new google.maps.LatLng(coords[1], coords[0]),
+            icon: img,
+            map: null
+          });
+          APP.markers["" + (container.attr('id'))]["" + element.name].push(marker);
+          infoWindow = new google.maps.InfoWindow({
+            content: "<div class=\"ymaps_ballon_opened\">\n  <img src=\"" + sub_element.description + "\" />\n  <a href=\"" + sub_element.link + "\">\n    <h3>" + sub_element.name + "</h3>\n  </a>\n  <div class=\"tags\">\n    " + sub_element.tags + "\n  </div>\n  <div class=\"footer\">\n    Рейтинг: " + sub_element.rating + "\n  </div>\n</div>"
+          });
+          _results.push(google.maps.event.addListener(marker, "click", openInfoWindow(infoWindow, marker)));
+        } else {
+          _results.push(void 0);
+        }
+      }
+      return _results;
     };
     return $.ajax({
       type: "GET",
