@@ -40,106 +40,81 @@ $(document).ready ->
 
   APP.markers = {}
 
-  ymaps.ready ->
-    addMenuItem = (group, ymap, menuContainer) ->
-      APP.markers["menu#{group.properties.get("description")}"] = {}
-      $("""<li><ul id="menu#{group.properties.get("description")}"></ul></li>""").appendTo menuContainer
-    
-    openInfoWindow = (infoWindow, marker) ->
-      ->      
-        # Close the last selected marker before opening this one.
-        APP.visibleInfoWindow.close() if APP.visibleInfoWindow
-        infoWindow.open APP.map, marker
-        APP.visibleInfoWindow = infoWindow
+  openInfoWindow = (infoWindow, marker) ->
+    ->
+      APP.visibleInfoWindow.close() if APP.visibleInfoWindow
+      infoWindow.open APP.map, marker
+      APP.visibleInfoWindow = infoWindow
 
-    addMenuItem2 = (group, ymap, container) ->
-      container = $(container)
-      img = ""
-      unless group.getLength() is 0
-        img = group.get(0).options.get("iconImageHref")
+  addMenuItem = (element, menuContainer) ->
+    console.log 
+    APP.markers["menu#{element.description}"] = {}
+    $("""<li><ul id="menu#{element.description}"></ul></li>""").appendTo menuContainer
+
+  addMenuItem2 = (element, container) ->
+    container = $(container)
+    img = ""
+    if element.elements[0].marker?
+      img = element.elements[0].marker
+    else
+      img = "http://allvbg.ru/static/allvbg/img/transparent.png"
+    item = $("""<a class='title_sub' data-name='#{element.name}' href='#'><img src='#{img}' alt=' '/>#{element.name}</a>""")
+    item.click ->
+      elem = $ @
+      if elem.hasClass 'active_sub'
+        inner_map = null
+        elem.removeClass 'active_sub'
       else
-        img = "http://allvbg.ru/static/allvbg/img/transparent.png"
-      item = $("""<a class='title_sub' data-name='#{group.properties.get("name")}' href='#'><img src='#{img}' alt=''/>#{group.properties.get("name")}</a>""")
+        inner_map = APP.map
+        elem.addClass 'active_sub'
+      for marker in APP.markers["#{container.attr('id')}"]["#{elem.data('name')}"]
+        marker.setMap inner_map
+    .appendTo $("<li></li>").appendTo(container)
 
-      item.click ->
-        elem = $ @
-        if elem.hasClass 'active_sub'
-          inner_map = null
-          elem.removeClass 'active_sub'
-        else
-          inner_map = APP.map
-          elem.addClass 'active_sub'
-        for marker in APP.markers["#{container.attr('id')}"]["#{elem.data('name')}"]
-          marker.setMap inner_map
+    APP.markers["#{container.attr('id')}"]["#{element.name}"] = []
 
-      .appendTo $("<li></li>").appendTo(container)
-      APP.markers["#{container.attr('id')}"]["#{group.properties.get("name")}"] = []
-      group.each (raw_marker) ->
-        marker = new google.maps.Marker
-          position: new google.maps.LatLng raw_marker.geometry._ti[1], raw_marker.geometry._ti[0]
-          icon: img
-          map: null
-        APP.markers["#{container.attr('id')}"]["#{group.properties.get("name")}"].push marker
+    # element.each (raw_marker) ->
+    #   marker = new google.maps.Marker
+    #     position: new google.maps.LatLng raw_marker.geometry._ti[1], raw_marker.geometry._ti[0]
+    #     icon: img
+    #     map: null
+    #   APP.markers["#{container.attr('id')}"]["#{element.properties.get("name")}"].push marker
 
-        # Create marker info window.
-        infoWindow = new google.maps.InfoWindow(
-          content: """
-            <div class="ymaps_ballon_opened">
-              #{raw_marker.properties.get("description")}
-              <a href="$[ExtendedData.link]">
-                <h3>#{raw_marker.properties.get("name")}</h3>
-              </a>
-              <div class="tags">
-                $[ExtendedData.tags]
-              </div>
-              <div class="footer">
-                Рейтинг: $[ExtendedData.rating]
-              </div>
-            </div>
-            """
-          # size: new google.maps.Size(260, 300)
-        )
-        
-        # Add marker click event listener.
-        google.maps.event.addListener marker, "click", openInfoWindow(infoWindow, marker)
+    #   # Create marker info window.
+    #   infoWindow = new google.maps.InfoWindow(
+    #     content: """
+    #       <div class="ymaps_ballon_opened">
+    #         #{raw_marker.properties.get("description")}
+    #         <a href="$[ExtendedData.link]">
+    #           <h3>#{raw_marker.properties.get("name")}</h3>
+    #         </a>
+    #         <div class="tags">
+    #           $[ExtendedData.tags]
+    #         </div>
+    #         <div class="footer">
+    #           Рейтинг: $[ExtendedData.rating]
+    #         </div>
+    #       </div>
+    #       """
+    #     # size: new google.maps.Size(260, 300)
+    #   )
+      
+    #   # Add marker click event listener.
+    #   google.maps.event.addListener marker, "click", openInfoWindow(infoWindow, marker)
 
-
-    myMap = ''
-
-    ymaps.geoXml.load("http://allvbg.ru/main_map.xml").then ((res) ->
-      res.geoObjects.each (item) ->
-        addMenuItem item, myMap, $("#menu")
-        item.each (item2) ->
-          cnt = "#menu" + item.properties.get("description")
-          addMenuItem2 item2, myMap, cnt
-      $('#scrollbar1').tinyscrollbar()
-    ), (error) ->
-      alert "При загрузке YMapsMl-файла произошла ошибка: " + error
-
-
-# boxText = document.createElement("div")
-# boxText.style.cssText = "border: 1px solid black; margin-top: 8px; background: yellow; padding: 5px;"
-# boxText.innerHTML = "City Hall, Sechelt<br>British Columbia<br>Canada"
-# myOptions =
-#   content: boxText
-#   disableAutoPan: false
-#   maxWidth: 0
-#   pixelOffset: new google.maps.Size(-140, 0)
-#   zIndex: null
-#   boxStyle:
-#     background: "url('tipbox.gif') no-repeat"
-#     opacity: 0.75
-#     width: "280px"
-
-#   closeBoxMargin: "10px 2px 2px 2px"
-#   closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif"
-#   infoBoxClearance: new google.maps.Size(1, 1)
-#   isHidden: false
-#   pane: "floatPane"
-#   enableEventPropagation: false
-
-# google.maps.event.addListener marker, "click", (e) ->
-#   ib.open theMap, this
-
-# ib = new InfoBox(myOptions)
-# ib.open theMap, marker
+  $.ajax
+    type: "GET"
+    url: "http://allvbg.ru/map.json"
+    dataType: "jsonp"
+  .done (data) ->
+    console.log data
+    for element in data.elements
+      if element.elements?
+        addMenuItem element, $("#menu")
+        for sub_element in element.elements
+          if sub_element.elements?
+            container = "#menu#{element.description}"
+            addMenuItem2 sub_element, container
+    $('#scrollbar1').tinyscrollbar()
+  .error (data) ->
+    alert "При загрузке карты произошла ошибка"

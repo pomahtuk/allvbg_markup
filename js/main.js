@@ -1,6 +1,6 @@
 (function() {
   $(document).ready(function() {
-    var APP, MY_MAPTYPE_ID, customMapType, mapOptions, map_style;
+    var APP, MY_MAPTYPE_ID, addMenuItem, addMenuItem2, customMapType, mapOptions, map_style, openInfoWindow;
     APP = {};
     MY_MAPTYPE_ID = 'custom_style';
     map_style = [
@@ -46,78 +46,75 @@
     });
     APP.map.mapTypes.set(MY_MAPTYPE_ID, customMapType);
     APP.markers = {};
-    return ymaps.ready(function() {
-      var addMenuItem, addMenuItem2, myMap, openInfoWindow;
-      addMenuItem = function(group, ymap, menuContainer) {
-        APP.markers["menu" + (group.properties.get("description"))] = {};
-        return $("<li><ul id=\"menu" + (group.properties.get("description")) + "\"></ul></li>").appendTo(menuContainer);
-      };
-      openInfoWindow = function(infoWindow, marker) {
-        return function() {
-          if (APP.visibleInfoWindow) {
-            APP.visibleInfoWindow.close();
-          }
-          infoWindow.open(APP.map, marker);
-          return APP.visibleInfoWindow = infoWindow;
-        };
-      };
-      addMenuItem2 = function(group, ymap, container) {
-        var img, item;
-        container = $(container);
-        img = "";
-        if (group.getLength() !== 0) {
-          img = group.get(0).options.get("iconImageHref");
-        } else {
-          img = "http://allvbg.ru/static/allvbg/img/transparent.png";
+    openInfoWindow = function(infoWindow, marker) {
+      return function() {
+        if (APP.visibleInfoWindow) {
+          APP.visibleInfoWindow.close();
         }
-        item = $("<a class='title_sub' data-name='" + (group.properties.get("name")) + "' href='#'><img src='" + img + "' alt=''/>" + (group.properties.get("name")) + "</a>");
-        item.click(function() {
-          var elem, inner_map, marker, _i, _len, _ref, _results;
-          elem = $(this);
-          if (elem.hasClass('active_sub')) {
-            inner_map = null;
-            elem.removeClass('active_sub');
-          } else {
-            inner_map = APP.map;
-            elem.addClass('active_sub');
-          }
-          _ref = APP.markers["" + (container.attr('id'))]["" + (elem.data('name'))];
-          _results = [];
-          for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-            marker = _ref[_i];
-            _results.push(marker.setMap(inner_map));
-          }
-          return _results;
-        }).appendTo($("<li></li>").appendTo(container));
-        APP.markers["" + (container.attr('id'))]["" + (group.properties.get("name"))] = [];
-        return group.each(function(raw_marker) {
-          var infoWindow, marker;
-          marker = new google.maps.Marker({
-            position: new google.maps.LatLng(raw_marker.geometry._ti[1], raw_marker.geometry._ti[0]),
-            icon: img,
-            map: null
-          });
-          APP.markers["" + (container.attr('id'))]["" + (group.properties.get("name"))].push(marker);
-          infoWindow = new google.maps.InfoWindow({
-            content: "<div class=\"ymaps_ballon_opened\">\n  " + (raw_marker.properties.get("description")) + "\n  <a href=\"$[ExtendedData.link]\">\n    <h3>" + (raw_marker.properties.get("name")) + "</h3>\n  </a>\n  <div class=\"tags\">\n    $[ExtendedData.tags]\n  </div>\n  <div class=\"footer\">\n    Рейтинг: $[ExtendedData.rating]\n  </div>\n</div>"
-          });
-          return google.maps.event.addListener(marker, "click", openInfoWindow(infoWindow, marker));
-        });
+        infoWindow.open(APP.map, marker);
+        return APP.visibleInfoWindow = infoWindow;
       };
-      myMap = '';
-      return ymaps.geoXml.load("http://allvbg.ru/main_map.xml").then((function(res) {
-        res.geoObjects.each(function(item) {
-          addMenuItem(item, myMap, $("#menu"));
-          return item.each(function(item2) {
-            var cnt;
-            cnt = "#menu" + item.properties.get("description");
-            return addMenuItem2(item2, myMap, cnt);
-          });
-        });
-        return $('#scrollbar1').tinyscrollbar();
-      }), function(error) {
-        return alert("При загрузке YMapsMl-файла произошла ошибка: " + error);
-      });
+    };
+    addMenuItem = function(element, menuContainer) {
+      console.log;
+      APP.markers["menu" + element.description] = {};
+      return $("<li><ul id=\"menu" + element.description + "\"></ul></li>").appendTo(menuContainer);
+    };
+    addMenuItem2 = function(element, container) {
+      var img, item;
+      container = $(container);
+      img = "";
+      if (element.elements[0].marker != null) {
+        img = element.elements[0].marker;
+      } else {
+        img = "http://allvbg.ru/static/allvbg/img/transparent.png";
+      }
+      item = $("<a class='title_sub' data-name='" + element.name + "' href='#'><img src='" + img + "' alt=' '/>" + element.name + "</a>");
+      item.click(function() {
+        var elem, inner_map, marker, _i, _len, _ref, _results;
+        elem = $(this);
+        if (elem.hasClass('active_sub')) {
+          inner_map = null;
+          elem.removeClass('active_sub');
+        } else {
+          inner_map = APP.map;
+          elem.addClass('active_sub');
+        }
+        _ref = APP.markers["" + (container.attr('id'))]["" + (elem.data('name'))];
+        _results = [];
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+          marker = _ref[_i];
+          _results.push(marker.setMap(inner_map));
+        }
+        return _results;
+      }).appendTo($("<li></li>").appendTo(container));
+      return APP.markers["" + (container.attr('id'))]["" + element.name] = [];
+    };
+    return $.ajax({
+      type: "GET",
+      url: "http://allvbg.ru/map.json",
+      dataType: "jsonp"
+    }).done(function(data) {
+      var container, element, sub_element, _i, _j, _len, _len1, _ref, _ref1;
+      console.log(data);
+      _ref = data.elements;
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        element = _ref[_i];
+        if (element.elements != null) {
+          addMenuItem(element, $("#menu"));
+          _ref1 = element.elements;
+          for (_j = 0, _len1 = _ref1.length; _j < _len1; _j++) {
+            sub_element = _ref1[_j];
+            if (sub_element.elements != null) {
+              container = "#menu" + element.description;
+              addMenuItem2(sub_element, container);
+            }
+          }
+        }
+      }
+      return $('#scrollbar1').tinyscrollbar();
+    }).error(function(data) {
+      return alert("При загрузке карты произошла ошибка");
     });
   });
 
