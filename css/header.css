@@ -1,4 +1,3 @@
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/header\.sass}line{font-family:\000036}}
 header {
   -webkit-box-shadow: #153c56 0px 1px 5px;
   -moz-box-shadow: #153c56 0px 1px 5px;
@@ -9,7 +8,6 @@ header {
   position: relative;
   z-index: 99;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/header\.sass}line{font-family:\0000314}}
 header .header_logo {
   display: block;
   height: 40px;

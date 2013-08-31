@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      "Добавить организацию"%
+    </title>
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+      <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <script src="http://api-maps.yandex.ru/2.0/?load=package.full&amp;lang=ru-RU" type="text/javascript"></script>
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/redactor.css" rel="stylesheet">
+        <link href="css/select2.css" rel="stylesheet">
+        <link href="css/base_add.css" rel="stylesheet">
+        <link href="css/firm_add.css" rel="stylesheet">
+      </meta>
+    </meta>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-10">
+          {% for key, value in form.errors.items %}
+          <div class="alert alert-danger">
+            {{key}} - {{value}}
+          </div>
+          {% endfor %}
+          <form action="http://allvbg.ru/firm/add/" class="form-horizontal" enctype="multipart/form-data" method="post">
+            <input id="id_totalvotes" maxlength="50" name="totalvotes" type="hidden" value="0"><input id="id_raiting" maxlength="50" name="raiting" type="hidden" value="0"><legend> % trans "Добавить организацию"%</legend>{% csrf_token %}
+            <div class="form-group">
+              <label class="col-lg-2" for="id_name">{{ form.name.label_tag }}</label>
+              <div class="col-lg-10">
+                <input class="form-control" id="id_name" name="name" type="text">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-2" for="id_parent">Категория</label>
+              <div class="col-lg-10">
+                <input class="form-control" id="id_parent" name="parent" type="hidden">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-2" for="id_short">{{ form.short.label_tag }}</label>
+              <div class="col-lg-10">
+                <textarea class="form-control" cols="40" id="id_short" name="short" rows="10"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-2" for="id_description">{{ form.description.label_tag }}</label>
+              <div class="col-lg-10">
+                <textarea class="form-control" cols="40" id="id_description" name="description" rows="10"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-2">{{ form.image1.label_tag }}</label>
+              <div class="col-lg-10">
+                {{ form.image1 }}
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-2">{{ form.image2.label_tag }}</label>
+              <div class="col-lg-10">
+                {{ form.image2 }}
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-2">{{ form.image3.label_tag }}</label>
+              <div class="col-lg-10">
+                {{ form.image4 }}
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-2">{{ form.image4.label_tag }}</label>
+              <div class="col-lg-10">
+                {{ form.image4 }}
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-2" for="id_meta_key">{{ form.meta_key.label_tag }}</label>
+              <div class="col-lg-10">
+                <input class="form-control" id="id_meta_key" name="meta_key" type="text">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-2">{{ form.location.label_tag }}</label>
+              <div class="col-lg-10">
+                <div class="row">
+                  <div class="col-lg-7">
+                    <input class="vTextField form-control" id="YMapsInput" type="text">
+                  </div>
+                  <input class="btn btn-default col-lg-2" id="b1" type="button" value="Найти!">
+                </div>
+                <br>
+                <div id="YMapsID" style="width: 620px; height: 300px;"></div>
+                <input class="input-xlarge" id="id_location" name="location" type="hidden"><input class="input-xlarge" id="id_lat" name="lat" type="hidden"><input class="input-xlarge" id="id_lng" name="lng" type="hidden">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-lg-offset-2 col-lg-10">
+                <button class="btn btn-primary" type="submit">Добавить</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="redactor.js"></script>
+    <script src="js/flow.js"></script>
+    <script src="js/select2.js"></script>
+    <script src="js/base.js"></script>
+  </body>
+</html>
