@@ -271,18 +271,30 @@ html {
 }
 
 @media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003246}}
-#YMapsID {
+.map_container {
+  position: absolute;
+  top: 80px;
+  left: 0px;
   width: 100%;
-  height: calc(100%);
+  height: calc(100% - 80px);
   min-height: 250px;
+  overflow: hidden;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003251}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003255}}
+#YMapsID {
+  width: calc(100% + 130px );
+  height: calc(100%);
+  min-height: 250px;
+  margin-left: -130px;
+}
+
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003261}}
 body {
   height: 100%;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003254}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003264}}
 .main {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -297,7 +309,7 @@ body {
   left: 0px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003265}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003275}}
 #indx_flexbox:not(.indx_wide_input), #indx_rolledplaceholder {
   background: transparent !important;
   color: transparent !important;
@@ -307,18 +319,18 @@ body {
   cursor: pointer;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003293}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003303}}
 .ymaps_ballon_opened .content {
   padding: 10px 10px 0px 10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003296}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003306}}
 .ymaps_ballon_opened img {
   display: block;
   margin-bottom: 10px;
   width: 220px;
   height: 145px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003302}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003312}}
 .ymaps_ballon_opened a {
   display: -moz-inline-stack;
   display: inline-block;
@@ -333,18 +345,18 @@ body {
   margin-bottom: 5px;
   cursor: pointer;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003311}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003321}}
 .ymaps_ballon_opened a h3 {
   font: inherit;
   margin: 0px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003315}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003325}}
 .ymaps_ballon_opened .tags {
   font-size: 12px;
   color: #9eb2c0;
   margin: 0px 0px 10px 0px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003320}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003330}}
 .ymaps_ballon_opened .footer {
   padding: 0px 10px;
   height: 34px;
@@ -353,7 +365,7 @@ body {
   background: #f3f3f3;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003328}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003338}}
 .aside-1 {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -367,7 +379,7 @@ body {
   height: 100%;
   padding-top: 87px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003339}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003349}}
 .aside-1 a {
   margin: 30px 0px;
   display: block;
@@ -375,16 +387,16 @@ body {
   color: #e9f0f4;
   position: relative;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003346}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003356}}
 .aside-1 a:hover {
   color: white;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003349}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003359}}
 .aside-1 a i {
   font-size: 40px;
   display: block;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003353}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003363}}
 .aside-1 a input {
   position: absolute;
   height: 100%;
@@ -400,7 +412,7 @@ body {
   cursor: pointer;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003367}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003377}}
 .aside-2 {
   -webkit-box-shadow: rgba(1, 1, 1, 0.5) 0px 10px 50px;
   -moz-box-shadow: rgba(1, 1, 1, 0.5) 0px 10px 50px;
@@ -415,36 +427,36 @@ body {
   border: 3px solid #0063a5;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003379}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003389}}
 #menu img {
   width: 24px;
   height: 25px;
   margin-right: 5px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003383}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003393}}
 #menu a {
   display: block;
   font-size: 13px;
   color: #2e3641;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003388}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003398}}
 #menu li {
   margin: 5px 0px;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003391}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003401}}
 #scrollbar1 {
   clear: both;
   height: 100%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003395}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003405}}
 #scrollbar1 .viewport {
   width: 240px;
   height: 100%;
   overflow: hidden;
   position: relative;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003401}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003411}}
 #scrollbar1 .overview {
   padding: 5px;
   list-style: none;
@@ -452,22 +464,22 @@ body {
   left: 0;
   top: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003408}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003418}}
 #scrollbar1 .thumb {
   background-color: #003d5d;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003409}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003419}}
 #scrollbar1 .thumb .end {
   background-color: #003d5d;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003413}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003423}}
 #scrollbar1 .scrollbar {
   position: absolute;
   right: 0px;
   top: 0px;
   width: 10px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003419}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003429}}
 #scrollbar1 .track {
   background-color: #d8eefd;
   height: 100%;
@@ -475,7 +487,7 @@ body {
   position: relative;
   padding: 0 1px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003426}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003436}}
 #scrollbar1 .thumb {
   height: 20px;
   width: 8px;
@@ -484,18 +496,18 @@ body {
   position: absolute;
   top: 0;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003434}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003444}}
 #scrollbar1 .thumb .end {
   overflow: hidden;
   height: 5px;
   width: 8px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003439}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003449}}
 #scrollbar1 .disable {
   display: none;
 }
 
-@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003442}}
+@media -sass-debug-info{filename{font-family:file\:\/\/C\:\/Users\/PMaN\/Documents\/GitHub\/allvbg_markup\/css\/layout\.sass}line{font-family:\00003452}}
 .noSelect {
   user-select: none;
   -o-user-select: none;

@@ -65,14 +65,13 @@ $(document).ready ->
             </div>
           </div>
         """
-      shadowStyle: 1
+      shadowStyle: 0
       padding: 0
       borderRadius: 4
       arrowSize: 10
       borderWidth: 0
       hideCloseButton: true
 
-    console.log @sub_element
     APP.visibleInfoBubble.close() if APP.visibleInfoBubble
     infoBubble.open APP.map, @marker
     APP.visibleInfoBubble = infoBubble

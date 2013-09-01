@@ -59,14 +59,13 @@
       infoBubble = new InfoBubble({
         maxWidth: 240,
         content: "<div class=\"ymaps_ballon_opened\">\n  <div class=\"content\">\n    <img src=\"" + this.sub_element.description + "\" />\n    <a href=\"" + this.sub_element.link + "\">\n      <h3>" + this.sub_element.name + "</h3>\n    </a>\n    <div class=\"tags\">\n      " + this.sub_element.tags + "\n    </div>\n  </div>\n  <div class=\"footer\">\n    Рейтинг: " + this.sub_element.rating + "\n  </div>\n</div>",
-        shadowStyle: 1,
+        shadowStyle: 0,
         padding: 0,
         borderRadius: 4,
         arrowSize: 10,
         borderWidth: 0,
         hideCloseButton: true
       });
-      console.log(this.sub_element);
       if (APP.visibleInfoBubble) {
         APP.visibleInfoBubble.close();
       }

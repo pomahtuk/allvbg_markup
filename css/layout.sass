@@ -243,10 +243,20 @@ html
   font-family: 'Open Sans', sans-serif
   height: 100%
 
-#YMapsID
+.map_container
+  position: absolute
+  top: 80px
+  left: 0px
   width: 100%
+  height: calc(100% - 80px)
+  min-height: 250px
+  overflow: hidden
+
+#YMapsID
+  width: calc( 100% + 130px )
   height: calc(100%)
   min-height: 250px
+  margin-left: -130px
 
 body
   height: 100%
