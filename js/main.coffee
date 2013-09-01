@@ -40,11 +40,42 @@ $(document).ready ->
 
   APP.markers = {}
 
-  openInfoWindow = (infoWindow, marker) ->
-    ->
-      APP.visibleInfoWindow.close() if APP.visibleInfoWindow
-      infoWindow.open APP.map, marker
-      APP.visibleInfoWindow = infoWindow
+  openInfoBubble = (marker, sub_element) ->
+    console.log sub_element, marker
+    APP.visibleInfoBubble.close() if APP.visibleInfoBubble
+    infoBubble.open APP.map, marker
+    APP.visibleBubble = infoBubble
+
+  test = ->
+    infoBubble = new InfoBubble
+      maxWidth: 240
+      content: """
+          <div class="ymaps_ballon_opened">
+            <div class="content">
+              <img src="#{@sub_element.description}" />
+              <a href="#{@sub_element.link}">
+                <h3>#{@sub_element.name}</h3>
+              </a>
+              <div class="tags">
+                #{@sub_element.tags}
+              </div>
+            </div>
+            <div class="footer">
+              Рейтинг: #{@sub_element.rating}
+            </div>
+          </div>
+        """
+      shadowStyle: 1
+      padding: 0
+      borderRadius: 4
+      arrowSize: 10
+      borderWidth: 0
+      hideCloseButton: true
+
+    console.log @sub_element
+    APP.visibleInfoBubble.close() if APP.visibleInfoBubble
+    infoBubble.open APP.map, @marker
+    APP.visibleInfoBubble = infoBubble
 
   addMenuItem = (element, menuContainer) ->
     console.log 
@@ -61,6 +92,7 @@ $(document).ready ->
     item = $("""<a class='title_sub' data-name='#{element.name}' href='#'><img src='#{img}' alt=' '/>#{element.name}</a>""")
     item.click ->
       elem = $ @
+      APP.visibleInfoBubble.close() if APP.visibleInfoBubble
       if elem.hasClass 'active_sub'
         inner_map = null
         elem.removeClass 'active_sub'
@@ -82,26 +114,14 @@ $(document).ready ->
           map: null
         APP.markers["#{container.attr('id')}"]["#{element.name}"] .push marker
 
-        # Create marker info window.
-        infoWindow = new google.maps.InfoWindow(
-          content: """
-            <div class="ymaps_ballon_opened">
-              <img src="#{sub_element.description}" />
-              <a href="#{sub_element.link}">
-                <h3>#{sub_element.name}</h3>
-              </a>
-              <div class="tags">
-                #{sub_element.tags}
-              </div>
-              <div class="footer">
-                Рейтинг: #{sub_element.rating}
-              </div>
-            </div>
-            """
-        )
+        params = 
+          sub_element: sub_element
+          marker: marker
+
+        google.maps.event.addListener marker, "click", test.bind(params)
         
-        # Add marker click event listener.
-        google.maps.event.addListener marker, "click", openInfoWindow(infoWindow, marker)
+        # # Add marker click event listener.
+        # google.maps.event.addListener marker, "click", openInfoWindow(infoWindow, marker)
 
   $.ajax
     type: "GET"

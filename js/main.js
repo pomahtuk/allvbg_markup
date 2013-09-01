@@ -1,6 +1,6 @@
 (function() {
   $(document).ready(function() {
-    var APP, MY_MAPTYPE_ID, addMenuItem, addMenuItem2, customMapType, mapOptions, map_style, openInfoWindow;
+    var APP, MY_MAPTYPE_ID, addMenuItem, addMenuItem2, customMapType, mapOptions, map_style, openInfoBubble, test;
     APP = {};
     MY_MAPTYPE_ID = 'custom_style';
     map_style = [
@@ -46,14 +46,32 @@
     });
     APP.map.mapTypes.set(MY_MAPTYPE_ID, customMapType);
     APP.markers = {};
-    openInfoWindow = function(infoWindow, marker) {
-      return function() {
-        if (APP.visibleInfoWindow) {
-          APP.visibleInfoWindow.close();
-        }
-        infoWindow.open(APP.map, marker);
-        return APP.visibleInfoWindow = infoWindow;
-      };
+    openInfoBubble = function(marker, sub_element) {
+      console.log(sub_element, marker);
+      if (APP.visibleInfoBubble) {
+        APP.visibleInfoBubble.close();
+      }
+      infoBubble.open(APP.map, marker);
+      return APP.visibleBubble = infoBubble;
+    };
+    test = function() {
+      var infoBubble;
+      infoBubble = new InfoBubble({
+        maxWidth: 240,
+        content: "<div class=\"ymaps_ballon_opened\">\n  <div class=\"content\">\n    <img src=\"" + this.sub_element.description + "\" />\n    <a href=\"" + this.sub_element.link + "\">\n      <h3>" + this.sub_element.name + "</h3>\n    </a>\n    <div class=\"tags\">\n      " + this.sub_element.tags + "\n    </div>\n  </div>\n  <div class=\"footer\">\n    Рейтинг: " + this.sub_element.rating + "\n  </div>\n</div>",
+        shadowStyle: 1,
+        padding: 0,
+        borderRadius: 4,
+        arrowSize: 10,
+        borderWidth: 0,
+        hideCloseButton: true
+      });
+      console.log(this.sub_element);
+      if (APP.visibleInfoBubble) {
+        APP.visibleInfoBubble.close();
+      }
+      infoBubble.open(APP.map, this.marker);
+      return APP.visibleInfoBubble = infoBubble;
     };
     addMenuItem = function(element, menuContainer) {
       console.log;
@@ -61,7 +79,7 @@
       return $("<li><ul id=\"menu" + element.description + "\"></ul></li>").appendTo(menuContainer);
     };
     addMenuItem2 = function(element, container) {
-      var coords, img, infoWindow, item, marker, sub_element, _i, _len, _ref, _results;
+      var coords, img, item, marker, params, sub_element, _i, _len, _ref, _results;
       container = $(container);
       img = "";
       if (element.elements[0].marker != null) {
@@ -73,6 +91,9 @@
       item.click(function() {
         var elem, inner_map, marker, _i, _len, _ref, _results;
         elem = $(this);
+        if (APP.visibleInfoBubble) {
+          APP.visibleInfoBubble.close();
+        }
         if (elem.hasClass('active_sub')) {
           inner_map = null;
           elem.removeClass('active_sub');
@@ -101,10 +122,11 @@
             map: null
           });
           APP.markers["" + (container.attr('id'))]["" + element.name].push(marker);
-          infoWindow = new google.maps.InfoWindow({
-            content: "<div class=\"ymaps_ballon_opened\">\n  <img src=\"" + sub_element.description + "\" />\n  <a href=\"" + sub_element.link + "\">\n    <h3>" + sub_element.name + "</h3>\n  </a>\n  <div class=\"tags\">\n    " + sub_element.tags + "\n  </div>\n  <div class=\"footer\">\n    Рейтинг: " + sub_element.rating + "\n  </div>\n</div>"
-          });
-          _results.push(google.maps.event.addListener(marker, "click", openInfoWindow(infoWindow, marker)));
+          params = {
+            sub_element: sub_element,
+            marker: marker
+          };
+          _results.push(google.maps.event.addListener(marker, "click", test.bind(params)));
         } else {
           _results.push(void 0);
         }
