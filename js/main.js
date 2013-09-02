@@ -1,6 +1,20 @@
 (function() {
-  $(document).ready(function() {
+  $(function() {
     var APP, MY_MAPTYPE_ID, addMenuItem, addMenuItem2, customMapType, mapOptions, map_style, openInfoBubble;
+    $('.aside-1 a.hover').click(function() {
+      var elem, panel;
+      panel = $('#extra_panel');
+      elem = $(this);
+      if (panel.is(':visible') && panel.hasClass(elem.data('panel'))) {
+        panel.hide().attr('class', '');
+        elem.removeClass('active');
+      } else {
+        panel.show().attr('class', '').addClass(elem.data('panel'));
+        $('.aside-1 a.hover').removeClass('active');
+        elem.addClass('active');
+      }
+      return false;
+    });
     APP = {};
     MY_MAPTYPE_ID = 'custom_style';
     map_style = [
@@ -66,7 +80,6 @@
       return APP.visibleInfoBubble = infoBubble;
     };
     addMenuItem = function(element, menuContainer) {
-      console.log;
       APP.markers["menu" + element.description] = {};
       return $("<li><ul id=\"menu" + element.description + "\"></ul></li>").appendTo(menuContainer);
     };
@@ -131,7 +144,6 @@
       dataType: "jsonp"
     }).done(function(data) {
       var container, element, sub_element, _i, _j, _len, _len1, _ref, _ref1;
-      console.log(data);
       _ref = data.elements;
       for (_i = 0, _len = _ref.length; _i < _len; _i++) {
         element = _ref[_i];

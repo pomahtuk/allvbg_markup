@@ -1,4 +1,17 @@
-$(document).ready ->
+$ ->
+
+  $('.aside-1 a.hover').click ->
+    panel = $('#extra_panel')
+    elem = $ @
+    if panel.is(':visible') and panel.hasClass elem.data('panel')
+      panel.hide().attr('class', '')
+      elem.removeClass 'active'
+    else
+      panel.show().attr('class', '').addClass elem.data('panel')
+      $('.aside-1 a.hover').removeClass 'active'
+      elem.addClass 'active'
+
+    false
 
   APP = {}
 
@@ -73,7 +86,6 @@ $(document).ready ->
     APP.visibleInfoBubble = infoBubble
 
   addMenuItem = (element, menuContainer) ->
-    console.log 
     APP.markers["menu#{element.description}"] = {}
     $("""<li><ul id="menu#{element.description}"></ul></li>""").appendTo menuContainer
 
@@ -121,7 +133,6 @@ $(document).ready ->
     url: "http://allvbg.ru/map.json"
     dataType: "jsonp"
   .done (data) ->
-    console.log data
     for element in data.elements
       if element.elements?
         addMenuItem element, $("#menu")

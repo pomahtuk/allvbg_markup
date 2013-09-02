@@ -17,7 +17,11 @@ html class="no-js"
     link rel="stylesheet" href="css/layout.css"
 
     link rel="stylesheet" href="css/font-awesome.min.css"
-
+    link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"
+    link rel="stylesheet" href="css/redactor.css"
+    link rel="stylesheet" href="css/select2.css"
+    link rel="stylesheet" href="css/base_add.css"
+    link rel="stylesheet" href="css/firm_add.css"
 
     script src="js/vendor/modernizr-2.6.2.min.js"
     script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&language=ru"
@@ -35,11 +39,11 @@ html class="no-js"
         a href="#" id="search"
           i.icon-search
           input autocomplete="off" autocorrect="off" id="indx_srchbox_521de8b3273e549d107002ab" type="text"
-        a href="#"
+        a.hover href="#" data-panel="add_firm"
           i.icon-plus-sign
-        a href="#"
+        a.hover href="#" data-panel="send_mail"
           i.icon-envelope
-        a href="#"
+        a.hover href="#" data-panel="about_us"
           i.icon-info-sign
       aside class="aside-2"
         .scrollbar1 id="scrollbar1"
@@ -51,6 +55,80 @@ html class="no-js"
             ul.overview id="menu"
       .map_container
         #YMapsID
+
+      #extra_panel
+        .container
+          .row
+            .col-lg-12
+              / .alert.alert-danger
+              /   | {{key}} - {{value}}
+              form class="form-horizontal" action="http://allvbg.ru/firm/add/" enctype="multipart/form-data" method="post"
+                input#id_totalvotes maxlength="50" name="totalvotes" type="hidden" value="0"
+                input#id_raiting maxlength="50" name="raiting" type="hidden" value="0"
+                legend  Добавить организацию
+                / | {% csrf_token %}
+                .form-group
+                  label.col-lg-2 for="id_name" 
+                    | Название
+                  .col-lg-10
+                    input type="text" class="form-control" id="id_name" name="name"
+                .form-group
+                  label.col-lg-2 for="id_parent" 
+                    | Категория
+                  .col-lg-10
+                    input class="form-control" id="id_parent" name="parent" type="hidden"
+                .form-group
+                  label.col-lg-2 for="id_short" 
+                    | Описание
+                  .col-lg-10
+                    textarea cols="40" rows="10" class="form-control" id="id_short" name="short"
+                .form-group
+                  label.col-lg-2 for="id_description" 
+                    | Текст
+                  .col-lg-10
+                    textarea cols="40" rows="10" class="form-control" id="id_description" name="description"
+                .form-group
+                  label.col-lg-2
+                    | Фото 1
+                  .col-lg-10
+                    | {{ form.image1 }}
+                .form-group
+                  label.col-lg-2
+                    | Фото 2
+                  .col-lg-10
+                    | {{ form.image2 }}
+                .form-group
+                  label.col-lg-2
+                    | Фото 3
+                  .col-lg-10
+                    | {{ form.image4 }}
+                .form-group
+                  label.col-lg-2
+                    | Фото 4
+                  .col-lg-10
+                    | {{ form.image4 }}
+                .form-group
+                  label.col-lg-2 for="id_meta_key" 
+                    | Мета
+                  .col-lg-10
+                    input type="text" class="form-control" id="id_meta_key" name="meta_key"
+                .form-group
+                  label.col-lg-2
+                    | Адрес
+                  .col-lg-10
+                    .row
+                      .col-lg-7
+                        input#YMapsInput.vTextField type="text" class="form-control"
+                      input#b1 type="button" value="Найти!" class="btn btn-default col-lg-2"
+                    br
+                    #YMapsID style="width: 620px; height: 300px;"
+                    input#id_location.input-xlarge name="location" type="hidden"
+                    input#id_lat.input-xlarge name="lat" type="hidden"
+                    input#id_lng.input-xlarge name="lng" type="hidden"
+
+                .form-group
+                  .col-lg-offset-2.col-lg-10
+                    button type="submit" class="btn btn-primary" Добавить
 
       / footer class="footer"
       /   .block.news
@@ -208,6 +286,11 @@ html class="no-js"
   javascript:
     window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')
   
+  script src="redactor.js"
+  script src="js/flow.js"
+  script src="js/select2.js"
+  script src="js/base.js"
+
   script src="js/vendor/jquery.tinyscrollbar.min.js"
   script src="js/vendor/infobubble.js"
   script src="js/plugins.js"

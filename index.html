@@ -15,6 +15,11 @@
     <link href="css/aside.css" rel="stylesheet">
     <link href="css/layout.css" rel="stylesheet">
     <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/redactor.css" rel="stylesheet">
+    <link href="css/select2.css" rel="stylesheet">
+    <link href="css/base_add.css" rel="stylesheet">
+    <link href="css/firm_add.css" rel="stylesheet">
     <script src="js/vendor/modernizr-2.6.2.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false&amp;language=ru"></script>
     <script async="true" src="http://servant.indexisto.com/files/searchbox/searchbox.nocache.js?type=edit" type="text/javascript"></script>
@@ -25,7 +30,7 @@
     </header>
     <article class="main">
       <aside class="aside aside-1">
-        <a href="#" id="search"><i class="icon-search"></i><input autocomplete="off" autocorrect="off" id="indx_srchbox_521de8b3273e549d107002ab" type="text"></a><a href="#"><i class="icon-plus-sign"></i></a><a href="#"><i class="icon-envelope"></i></a><a href="#"><i class="icon-info-sign"></i></a>
+        <a href="#" id="search"><i class="icon-search"></i><input autocomplete="off" autocorrect="off" id="indx_srchbox_521de8b3273e549d107002ab" type="text"></a><a class="hover" data-panel="add_firm" href="#"><i class="icon-plus-sign"></i></a><a class="hover" data-panel="send_mail" href="#"><i class="icon-envelope"></i></a><a class="hover" data-panel="about_us" href="#"><i class="icon-info-sign"></i></a>
       </aside>
       <aside class="aside-2">
         <div class="scrollbar1" id="scrollbar1">
@@ -44,12 +49,100 @@
       <div class="map_container">
         <div id="YMapsID"></div>
       </div>
+      <div id="extra_panel">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12">
+              <form action="http://allvbg.ru/firm/add/" class="form-horizontal" enctype="multipart/form-data" method="post">
+                <input id="id_totalvotes" maxlength="50" name="totalvotes" type="hidden" value="0"><input id="id_raiting" maxlength="50" name="raiting" type="hidden" value="0"><legend> Добавить организацию</legend>
+                <div class="form-group">
+                  <label class="col-lg-2" for="id_name">Название</label>
+                  <div class="col-lg-10">
+                    <input class="form-control" id="id_name" name="name" type="text">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-lg-2" for="id_parent">Категория</label>
+                  <div class="col-lg-10">
+                    <input class="form-control" id="id_parent" name="parent" type="hidden">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-lg-2" for="id_short">Описание</label>
+                  <div class="col-lg-10">
+                    <textarea class="form-control" cols="40" id="id_short" name="short" rows="10"></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-lg-2" for="id_description">Текст</label>
+                  <div class="col-lg-10">
+                    <textarea class="form-control" cols="40" id="id_description" name="description" rows="10"></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-lg-2">Фото 1</label>
+                  <div class="col-lg-10">
+                    {{ form.image1 }}
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-lg-2">Фото 2</label>
+                  <div class="col-lg-10">
+                    {{ form.image2 }}
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-lg-2">Фото 3</label>
+                  <div class="col-lg-10">
+                    {{ form.image4 }}
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-lg-2">Фото 4</label>
+                  <div class="col-lg-10">
+                    {{ form.image4 }}
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-lg-2" for="id_meta_key">Мета</label>
+                  <div class="col-lg-10">
+                    <input class="form-control" id="id_meta_key" name="meta_key" type="text">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-lg-2">Адрес</label>
+                  <div class="col-lg-10">
+                    <div class="row">
+                      <div class="col-lg-7">
+                        <input class="vTextField form-control" id="YMapsInput" type="text">
+                      </div>
+                      <input class="btn btn-default col-lg-2" id="b1" type="button" value="Найти!">
+                    </div>
+                    <br>
+                    <div id="YMapsID" style="width: 620px; height: 300px;"></div>
+                    <input class="input-xlarge" id="id_location" name="location" type="hidden"><input class="input-xlarge" id="id_lat" name="lat" type="hidden"><input class="input-xlarge" id="id_lng" name="lng" type="hidden">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-lg-offset-2 col-lg-10">
+                    <button class="btn btn-primary" type="submit">Добавить</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
     </article>
   </body>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script type="text/javascript">
     window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')
   </script>
+  <script src="redactor.js"></script>
+  <script src="js/flow.js"></script>
+  <script src="js/select2.js"></script>
+  <script src="js/base.js"></script>
   <script src="js/vendor/jquery.tinyscrollbar.min.js"></script>
   <script src="js/vendor/infobubble.js"></script>
   <script src="js/plugins.js"></script>

@@ -329,6 +329,9 @@ body {
   padding-top: 87px;
 }
 .aside-1 a {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
   margin: 30px 0px;
   display: block;
   text-align: center;
@@ -337,6 +340,17 @@ body {
 }
 .aside-1 a:hover {
   color: white;
+  text-decoration: none;
+}
+.aside-1 a.hover:hover:before, .aside-1 a.active:before {
+  position: absolute;
+  top: -5px;
+  left: 0px;
+  content: "";
+  display: block;
+  width: 5px;
+  background: #0063a5;
+  height: 50px;
 }
 .aside-1 a i {
   font-size: 40px;
@@ -369,6 +383,25 @@ body {
   background: white;
   z-index: 999;
   border: 3px solid #0063a5;
+}
+
+#extra_panel {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-box-shadow: rgba(1, 1, 1, 0.5) 0px 10px 50px;
+  -moz-box-shadow: rgba(1, 1, 1, 0.5) 0px 10px 50px;
+  box-shadow: rgba(1, 1, 1, 0.5) 0px 10px 50px;
+  position: absolute;
+  height: calc(100% - 80px);
+  top: 80px;
+  left: 90px;
+  width: 630px;
+  padding: 10px;
+  background: white;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: none;
 }
 
 #menu img {

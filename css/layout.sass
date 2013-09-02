@@ -347,6 +347,7 @@ body
   padding-top: 87px
 
   a 
+    @include box-sizing
     margin: 30px 0px
     display: block
     text-align: center
@@ -355,6 +356,19 @@ body
 
     &:hover
       color: lighten($hedings_color, 15%)
+      text-decoration: none
+    
+    &.hover:hover, &.active
+      &:before
+        position: absolute
+        top: -5px
+        left: 0px
+        content: ''
+        display: block
+        width: 5px
+        background: $button_color
+        height: 50px
+
 
     i 
       font-size: 40px
@@ -384,6 +398,21 @@ body
   background: #fff
   z-index: 999
   border: 3px solid $button_color
+
+#extra_panel
+  @include box-sizing
+  @include box-shadow(rgba(#010101, .5) 0px 10px 50px)
+  position: absolute
+  height: calc(100% - 80px)
+  top: 80px
+  left: 90px
+  width: 630px
+  padding: 10px
+  background: #fff
+  overflow-y: auto
+  overflow-x: hidden
+  display: none
+
 
 #menu
   img 
