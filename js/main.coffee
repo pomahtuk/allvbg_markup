@@ -26,6 +26,7 @@ $(document).ready ->
       ]
     }
   ]
+
   mapOptions =
     zoom: 14
     center: new google.maps.LatLng 60.705288, 28.762311
@@ -40,13 +41,7 @@ $(document).ready ->
 
   APP.markers = {}
 
-  openInfoBubble = (marker, sub_element) ->
-    console.log sub_element, marker
-    APP.visibleInfoBubble.close() if APP.visibleInfoBubble
-    infoBubble.open APP.map, marker
-    APP.visibleBubble = infoBubble
-
-  test = ->
+  openInfoBubble = ->
     infoBubble = new InfoBubble
       maxWidth: 240
       content: """
@@ -65,12 +60,13 @@ $(document).ready ->
             </div>
           </div>
         """
-      shadowStyle: 0
+      shadowStyle: 1
       padding: 0
       borderRadius: 4
       arrowSize: 10
       borderWidth: 0
       hideCloseButton: true
+      backgroundColor: "rgb(243, 243, 243)"
 
     APP.visibleInfoBubble.close() if APP.visibleInfoBubble
     infoBubble.open APP.map, @marker
@@ -111,16 +107,14 @@ $(document).ready ->
           position: new google.maps.LatLng coords[1], coords[0]
           icon: img
           map: null
-        APP.markers["#{container.attr('id')}"]["#{element.name}"] .push marker
+        APP.markers["#{container.attr('id')}"]["#{element.name}"].push marker
 
         params = 
           sub_element: sub_element
           marker: marker
 
-        google.maps.event.addListener marker, "click", test.bind(params)
-        
-        # # Add marker click event listener.
-        # google.maps.event.addListener marker, "click", openInfoWindow(infoWindow, marker)
+        google.maps.event.addListener marker, "click", openInfoBubble.bind(params)
+
 
   $.ajax
     type: "GET"

@@ -1,6 +1,6 @@
 (function() {
   $(document).ready(function() {
-    var APP, MY_MAPTYPE_ID, addMenuItem, addMenuItem2, customMapType, mapOptions, map_style, openInfoBubble, test;
+    var APP, MY_MAPTYPE_ID, addMenuItem, addMenuItem2, customMapType, mapOptions, map_style, openInfoBubble;
     APP = {};
     MY_MAPTYPE_ID = 'custom_style';
     map_style = [
@@ -46,25 +46,18 @@
     });
     APP.map.mapTypes.set(MY_MAPTYPE_ID, customMapType);
     APP.markers = {};
-    openInfoBubble = function(marker, sub_element) {
-      console.log(sub_element, marker);
-      if (APP.visibleInfoBubble) {
-        APP.visibleInfoBubble.close();
-      }
-      infoBubble.open(APP.map, marker);
-      return APP.visibleBubble = infoBubble;
-    };
-    test = function() {
+    openInfoBubble = function() {
       var infoBubble;
       infoBubble = new InfoBubble({
         maxWidth: 240,
         content: "<div class=\"ymaps_ballon_opened\">\n  <div class=\"content\">\n    <img src=\"" + this.sub_element.description + "\" />\n    <a href=\"" + this.sub_element.link + "\">\n      <h3>" + this.sub_element.name + "</h3>\n    </a>\n    <div class=\"tags\">\n      " + this.sub_element.tags + "\n    </div>\n  </div>\n  <div class=\"footer\">\n    Рейтинг: " + this.sub_element.rating + "\n  </div>\n</div>",
-        shadowStyle: 0,
+        shadowStyle: 1,
         padding: 0,
         borderRadius: 4,
         arrowSize: 10,
         borderWidth: 0,
-        hideCloseButton: true
+        hideCloseButton: true,
+        backgroundColor: "rgb(243, 243, 243)"
       });
       if (APP.visibleInfoBubble) {
         APP.visibleInfoBubble.close();
@@ -125,7 +118,7 @@
             sub_element: sub_element,
             marker: marker
           };
-          _results.push(google.maps.event.addListener(marker, "click", test.bind(params)));
+          _results.push(google.maps.event.addListener(marker, "click", openInfoBubble.bind(params)));
         } else {
           _results.push(void 0);
         }
