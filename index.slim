@@ -62,7 +62,8 @@ html class="no-js"
             .col-lg-12
               / .alert.alert-danger
               /   | {{key}} - {{value}}
-              form class="form-horizontal" action="http://allvbg.ru/firm/add/" enctype="multipart/form-data" method="post"
+              / action="http://allvbg.ru/firm/add/" enctype="multipart/form-data" method="post"
+              form class="form-horizontal"
                 input#id_totalvotes maxlength="50" name="totalvotes" type="hidden" value="0"
                 input#id_raiting maxlength="50" name="raiting" type="hidden" value="0"
                 legend  Добавить организацию
@@ -118,10 +119,10 @@ html class="no-js"
                   .col-lg-10
                     .row
                       .col-lg-7
-                        input#YMapsInput.vTextField type="text" class="form-control"
+                        input#address.vTextField type="text" class="form-control"
                       input#b1 type="button" value="Найти!" class="btn btn-default col-lg-2"
                     br
-                    #YMapsID style="width: 620px; height: 300px;"
+                    #map-canvas style="width: 465px; height: 300px;"
                     input#id_location.input-xlarge name="location" type="hidden"
                     input#id_lat.input-xlarge name="lat" type="hidden"
                     input#id_lng.input-xlarge name="lng" type="hidden"

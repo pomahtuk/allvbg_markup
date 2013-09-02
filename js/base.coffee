@@ -61,4 +61,79 @@ $ ->
   $('#id_short').redactor();
   flow_test();
 
-  
+  window.Firm = {
+    initialized: false
+  }
+
+  window.Firm.initialize = ->
+    unless Firm.initialized
+    
+      map_style = [
+        {
+          "featureType": "landscape"
+          "stylers": [
+            { "saturation": -100 }
+          ]
+        },{
+          "featureType": "water"
+          "stylers": [
+            { "saturation": -100 }
+          ]
+        },{
+          "featureType": "road"
+          "stylers": [
+            { "saturation": -100 }
+          ]
+        },{
+          "featureType": "poi"
+          "stylers": [
+            { "saturation": -100 }
+          ]
+        }
+      ]
+
+      window.Firm.geocoder = new google.maps.Geocoder()
+
+      mapOptions =
+        zoom: 13
+        center: new google.maps.LatLng 60.705288, 28.762311
+        disableDefaultUI: true
+        mapTypeId: 'custom_style'
+
+      window.Firm.map = new google.maps.Map document.getElementById("map-canvas"), mapOptions
+
+      customMapType = new google.maps.StyledMapType map_style, { name:"Grayscale" }
+
+      window.Firm.map.mapTypes.set 'custom_style', customMapType
+
+      Firm.initialized = true
+
+      $('#b1').click ->
+        window.Firm.codeAddress()
+
+
+  window.Firm.codeAddress = ->
+    address = $("#address").val()
+    console.log address
+    window.Firm.geocoder.geocode
+      address: address
+    , (results, status) ->
+      if status is google.maps.GeocoderStatus.OK
+        window.Firm.map.setCenter results[0].geometry.location
+        marker = new google.maps.Marker
+          map: window.Firm.map
+          position: results[0].geometry.location
+          draggable: true
+
+        $("#id_lat").val marker.getPosition().lat()
+        $("#id_lng").val marker.getPosition().lng()
+        $("#id_location").val "#{marker.getPosition().lat()},#{marker.getPosition().lng()}"
+
+        google.maps.event.addListener marker, 'dragend', ->
+          $("#id_lat").val marker.getPosition().lat()
+          $("#id_lng").val marker.getPosition().lng()
+          $("#id_location").val "#{marker.getPosition().lat()},#{marker.getPosition().lng()}"
+          console.log $("#id_lat").val(), $("#id_lng").val()
+
+      else
+        alert "Geocode was not successful for the following reason: " + status

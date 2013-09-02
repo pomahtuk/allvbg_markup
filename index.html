@@ -53,7 +53,7 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-12">
-              <form action="http://allvbg.ru/firm/add/" class="form-horizontal" enctype="multipart/form-data" method="post">
+              <form class="form-horizontal">
                 <input id="id_totalvotes" maxlength="50" name="totalvotes" type="hidden" value="0"><input id="id_raiting" maxlength="50" name="raiting" type="hidden" value="0"><legend> Добавить организацию</legend>
                 <div class="form-group">
                   <label class="col-lg-2" for="id_name">Название</label>
@@ -114,12 +114,12 @@
                   <div class="col-lg-10">
                     <div class="row">
                       <div class="col-lg-7">
-                        <input class="vTextField form-control" id="YMapsInput" type="text">
+                        <input class="vTextField form-control" id="address" type="text">
                       </div>
                       <input class="btn btn-default col-lg-2" id="b1" type="button" value="Найти!">
                     </div>
                     <br>
-                    <div id="YMapsID" style="width: 620px; height: 300px;"></div>
+                    <div id="map-canvas" style="width: 465px; height: 300px;"></div>
                     <input class="input-xlarge" id="id_location" name="location" type="hidden"><input class="input-xlarge" id="id_lat" name="lat" type="hidden"><input class="input-xlarge" id="id_lng" name="lng" type="hidden">
                   </div>
                 </div>

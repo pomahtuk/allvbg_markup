@@ -12,6 +12,9 @@
         panel.show().attr('class', '').addClass(elem.data('panel'));
         $('.aside-1 a.hover').removeClass('active');
         elem.addClass('active');
+        if (elem.data('panel') === 'add_firm') {
+          Firm.initialize();
+        }
       }
       return false;
     });
