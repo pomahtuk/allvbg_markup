@@ -134,7 +134,12 @@
             sub_element: sub_element,
             marker: marker
           };
-          _results.push(google.maps.event.addListener(marker, "click", openInfoBubble.bind(params)));
+          google.maps.event.addListener(marker, "click", openInfoBubble.bind(params));
+          _results.push(google.maps.event.addListener(APP.map, 'click', function() {
+            if (APP.visibleInfoBubble) {
+              return APP.visibleInfoBubble.close();
+            }
+          }));
         } else {
           _results.push(void 0);
         }

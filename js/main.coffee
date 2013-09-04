@@ -129,6 +129,9 @@ $ ->
 
         google.maps.event.addListener marker, "click", openInfoBubble.bind(params)
 
+        google.maps.event.addListener APP.map, 'click', ->
+          APP.visibleInfoBubble.close() if APP.visibleInfoBubble
+
   $.ajax
     type: "GET"
     url: "http://allvbg.ru/map.json"
